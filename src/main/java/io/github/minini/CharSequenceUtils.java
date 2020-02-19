@@ -3,6 +3,9 @@ package io.github.minini;
 import java.util.PrimitiveIterator;
 
 /**
+ *
+ * a simple utils for CharSequence
+ *
  * @author <a href="https://github.com/ForteScarlet"> ForteScarlet </a>
  */
 public class CharSequenceUtils {
