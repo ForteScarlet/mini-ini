@@ -1,4 +1,4 @@
-<div style="text-align: center;"><h2>mini ini</h2></div>
+<div style="text-align: center;"><h1>mini-ini</h1></div>
 
 ## What is this?
 This is a mini util for `*.ini` file.
