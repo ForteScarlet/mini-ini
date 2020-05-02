@@ -1,42 +1,64 @@
 package io.github.minini.element;
 
 
-import io.github.minini.CharSequenceUtils;
-
 /**
  * an abstract class for {@link IniElement}.
+ *
  * @author <a href="https://github.com/ForteScarlet"> ForteScarlet </a>
  */
 public abstract class BaseElement implements IniElement {
 
-    /** value of comment text. */
-    private CharSequence value;
-    /** the line number. */
+    /**
+     * value of comment text.
+     */
+    private String value;
+    /**
+     * the line number.
+     */
     private int lineNumber;
-    /** the originalValue  */
-    private CharSequence originalValue;
+    /**
+     * the originalValue
+     */
+    private String originalValue;
+    /**
+     * comment, nullable
+     */
+    private IniComment comment;
 
-    BaseElement(CharSequence value, CharSequence originalValue, int lineNumber){
+    BaseElement(String value, String originalValue, int lineNumber) {
         this.value = value;
         this.lineNumber = lineNumber;
         this.originalValue = originalValue;
+        this.comment = null;
+    }
+
+    /**
+     * maybe have comment
+     */
+    BaseElement(String value, String originalValue, int lineNumber, IniComment comment) {
+        this.value = value;
+        this.lineNumber = lineNumber;
+        this.originalValue = originalValue;
+        this.comment = comment;
     }
 
     /**
      * trim a value
+     *
      * @param value char sequence value
      * @return trimmed value
      */
-    protected static CharSequence trim(CharSequence value){
-        return CharSequenceUtils.trim(value);
+    protected static String trim(String value) {
+        return value.trim();
     }
 
     /**
-     * If the {@link #value} changed, change the {@link #originalValue}
-     * @param newValue when {@link #value} changes, like {@link #setValue(CharSequence)} or {@link #setValue(java.util.function.Function)}
+     * If the {@code value} changed, change the originalValue
+     *
+     * @param newValue when {@code value} changes, like {@link #setValue(String)} or {@link #setValue(java.util.function.Function)}
      * @return new originalValue
      */
-    protected abstract CharSequence valueChanged(CharSequence newValue);
+    protected abstract String valueChanged(String newValue);
 
     /**
      * <p>this element's value.
@@ -46,38 +68,96 @@ public abstract class BaseElement implements IniElement {
      * @return some value
      */
     @Override
-    public CharSequence value() {
+    public String value() {
         return this.value;
     }
 
     /**
+     * change value.
+     *
+     * @param newValue a new value
+     */
+    protected void changeValue(String newValue) {
+        // default: just set value.
+        value = newValue;
+    }
+
+    /**
      * change this element's value.
+     * if you want to DIY how to set value, Recommended to cover {@link #changeValue(String)} instead of {@link #setValue(String)}
      *
      * @param newValue a new value
      * @return old value
      * @see #value()
      */
     @Override
-    public CharSequence setValue(CharSequence newValue) {
-        CharSequence old = value;
+    public String setValue(String newValue) {
+        String old = value;
         // change value, and update OriginalValue
-        originalValue = valueChanged(value = newValue);
+        changeValue(newValue);
+        // trigger value-changed event
+        setOriginalValue(valueChanged(newValue));
         return old;
     }
 
 
     /**
      * Default is {@code originalValue.toString()}
+     *
      * @return string value
      */
     @Override
-    public String toString(){
-        return originalValue.toString();
+    public String toString() {
+        return toCompleteString();
     }
 
+    /**
+     * get the original string.
+     * @return original string value.
+     */
+    protected String getOriginalValue() {
+        return originalValue;
+    }
 
+    protected void setOriginalValue(String newOriginalValue) {
+        this.originalValue = newOriginalValue;
+    }
 
-    //**************** implements from CharSequence ****************//
+    @Override
+    public IniComment getComment() {
+        return comment;
+    }
+
+    /**
+     * clear comment (if exists).
+     */
+    @Override
+    public void clearComment() {
+        this.comment = null;
+    }
+
+    /**
+     * like {@link #toString()}, without comment value(if exists).
+     *
+     * @return to string value without comment value.
+     */
+    @Override
+    public String toNoCommentString() {
+        return originalValue;
+    }
+
+    /**
+     * <pre> Get complete information.
+     * <pre> Take sec as an example：{@code section.toString() + all properties.toString() + comment.toString()}
+     * <pre> In general, it is about the same as {@link #toString()}.
+     * @return
+     */
+    @Override
+    public String toCompleteString() {
+        return comment == null ? originalValue : originalValue + comment;
+    }
+
+    //**************** implements from String ****************//
 
 
     /**
@@ -138,6 +218,6 @@ public abstract class BaseElement implements IniElement {
      */
     @Override
     public CharSequence subSequence(int start, int end) {
-        return value().subSequence(start, end);
+        return value.subSequence(start, end);
     }
 }

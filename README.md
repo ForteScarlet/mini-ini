@@ -5,15 +5,20 @@ This is a mini util for `*.ini` file.
 
 >My English is poor, but I still try to edit comments in English. I hope you can understand.
 > 
->Partly from google translation.
+>Most come from google translation.
 > 
 >如果你会中文，那太好了，我们能够很好的交流。
 > 
 >and hope a star, Thanks~  ♪(´▽｀)
 
-# to be continued...
+# === to be continued ===> 
 
 ## How to use?
+first, Click the star button in the upper right corner to make some hidden content take effect. :P
+
+
+
+## 
 ## What I need to pay attention to?
 ## I found a bug
 

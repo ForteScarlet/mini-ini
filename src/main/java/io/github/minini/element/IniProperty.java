@@ -1,37 +1,149 @@
 package io.github.minini.element;
 
+import java.util.Map;
+import java.util.function.Function;
+
 /**
- *
  * Ini file's parameters, like {@code property1=value1 }
  *
  * @author <a href="https://github.com/ForteScarlet"> ForteScarlet </a>
  */
-public class IniProperty {
+public class IniProperty extends BaseElement implements Map.Entry<String, String> {
 
-    /** {@code property=value}, split by {@code '='} */
+    /**
+     * {@code property=value}, split by {@code '='}
+     */
     public static final char P_V_SPLIT = '=';
 
-    /** from section */
+    /**
+     * from section
+     */
     private IniSection section;
 
     private String key;
-    private String value;
+    // private value. The value in super class, no need here.
 
-    public IniProperty(IniSection section, String key, String value){
+    public IniProperty(IniSection section, String key, String value, String originalValue, int lineNumber) {
+        super(value, originalValue, lineNumber);
         this.section = section;
         this.key = key;
-        this.value = value;
     }
 
+    public IniProperty(String key, String value, String originalValue, int lineNumber) {
+        super(value, originalValue, lineNumber);
+        this.key = key;
+    }
+
+    public IniProperty(IniSection section, String key, String value, String originalValue, int lineNumber, IniComment comment) {
+        super(value, originalValue, lineNumber, comment);
+        this.section = section;
+        this.key = key;
+    }
+
+    public IniProperty(String key, String value, String originalValue, int lineNumber, IniComment comment) {
+        super(value, originalValue, lineNumber, comment);
+        this.key = key;
+    }
+
+    /**
+     * section setter.
+     */
+    public void setSection(IniSection section) {
+        this.section = section;
+    }
+
+    /**
+     * section getter.
+     */
+    public IniSection getSection() {
+        return this.section;
+    }
+
+    /**
+     * get key value
+     *
+     * @return String field: key
+     */
+    public String key() {
+        return this.key;
+    }
+
+    /**
+     * change key value.
+     *
+     * @param newKey new key.
+     */
+    protected void changeKey(String newKey) {
+        this.key = newKey;
+    }
+
+    /**
+     * set a new Key.
+     *
+     * @param newKey new Key
+     * @return old value.
+     */
+    public String setKey(String newKey) {
+        // old
+        String old = key;
+        // change key
+        changeKey(newKey);
+        // update originalValue
+        setOriginalValue(keyChanged(newKey));
+        return old;
+    }
+
+    /**
+     * when key changed, get the new originalValue.
+     *
+     * @param newKey new key.
+     * @return original value.
+     */
+    protected String keyChanged(String newKey) {
+        return key.toString() + P_V_SPLIT + newKey;
+    }
+
+    /**
+     * when value changed, update originalValue.
+     *
+     * @param newValue when {@code value} changes, like {@link #setValue(String)} or {@link #setValue(Function)}
+     * @return new originalValue
+     */
     @Override
-    public String toString(){
-        return key + '=' + value;
+    protected String valueChanged(String newValue) {
+        return key.toString() + P_V_SPLIT + newValue;
+    }
+
+    /**
+     * <pre> there may be comments at the end of each element.
+     * <pre> or null.
+     * <pre> if this element is comment, return itself.
+     * <pre> so, nullable, or see {@link #getCommentOptional}.
+     * @see #getCommentOptional()
+     * @return comment end of the element or null. if element, return itself.
+     */
+    @Override
+    public IniComment getComment() {
+        return null;
+    }
+
+    //**************** implements Map.Empty methods ****************//
+
+    /**
+     * @see #key()
+     */
+    @Override
+    public String getKey() {
+        return key();
     }
 
 
-    public String toSectionString(){
-        return String.valueOf(section);
+    /**
+     *
+     * @see #value()
+     */
+    @Override
+    public String getValue() {
+        return value();
     }
-
-
 }

@@ -12,11 +12,11 @@ import io.github.minini.element.IniElement;
 public interface ElementFormattable<E extends IniElement> {
 
     /**
-     * format charSequence value as IniElement
-     * @param value a CharSequence value
+     * format String value as IniElement
+     * @param value a String value
      * @param line line number
      * @return {@link IniElement}
      */
-    E format(CharSequence value, int line);
+    E format(String value, int line);
 
 }

@@ -7,27 +7,28 @@ package io.github.minini.element;
  */
 public class IniComment extends BaseElement {
 
-    /** Ini file comment's head .   */
+    /** Ini file comment's head . maybe ';' or '#', default is ';'   */
     public static final char HEAD = ';';
+    public static final char[] HEADS = {';', '#'};
 
 
     /** constructor */
-    public IniComment(CharSequence value, CharSequence originalValue, int lineNumber){
+    public IniComment(String value, String originalValue, int lineNumber){
         super(value, originalValue, lineNumber);
     }
 
     /** constructor */
-    public IniComment(CharSequence originalValue, int lineNumber){
-        super(trim(originalValue.subSequence(0, originalValue.length())), originalValue, lineNumber);
+    public IniComment(String originalValue, int lineNumber){
+        super(originalValue.substring(1), originalValue, lineNumber);
     }
 
     /**
      * If the value changed, change the originalValue
      *
-     * @param newValue when value changes, like {@link #setValue(CharSequence)} or {@link #setValue(java.util.function.Function)}
+     * @param newValue when value changes, like {@link #setValue(String)} or {@link #setValue(java.util.function.Function)}
      */
     @Override
-    protected CharSequence valueChanged(CharSequence newValue) {
+    protected String valueChanged(String newValue) {
         return "; " + trim(newValue);
     }
 
@@ -42,7 +43,23 @@ public class IniComment extends BaseElement {
      */
     @Override
     public IniComment getComment() {
-        return this;
+        return null;
+    }
+
+    /**
+     * clear comment (if exists).
+     */
+    @Override
+    public void clearComment() { }
+
+    /**
+     * like {@link #toString()}, without comment value(if exists).
+     *
+     * @return to string value without comment value.
+     */
+    @Override
+    public String toNoCommentString() {
+        return getOriginalValue();
     }
 
 }

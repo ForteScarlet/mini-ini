@@ -1,12 +1,13 @@
-package io.github.minini;
+package io.github.minini.formatter;
 
+import io.github.minini.ElementFormattable;
 import io.github.minini.element.IniComment;
 import io.github.minini.element.IniElement;
 import io.github.minini.formatter.CommentElementFormatter;
 
 /**
- * <pre> elementFormatter, format a CharSequence value as {@link IniElement}.
- * <pre> Other than CommentElementFormatter, All element formatters should additionally require a comment element formatter, or extends comment element formatter.
+ * <pre> elementFormatter, format a String value as {@link IniElement}.
+ * <pre> Other than CommentElementFormatter, All element formatters should additionally require a comment element formatter
  * @author <a href="https://github.com/ForteScarlet"> ForteScarlet </a>
  */
 public abstract class ElementFormatter<E extends IniElement> implements ElementFormattable<E> {
@@ -23,6 +24,12 @@ public abstract class ElementFormatter<E extends IniElement> implements ElementF
     public ElementFormatter(CommentElementFormatter commentElementFormatter){
         this.commentElementFormatter = commentElementFormatter;
     }
+    /** constructor, the comment element formatter used new {@link CommentElementFormatter} */
+    public ElementFormatter(){
+        this.commentElementFormatter = new CommentElementFormatter();
+    }
+
+
 
     /** {@link #commentElementFormatter}'s getter */
     protected CommentElementFormatter getCommentElementFormatter(){
@@ -39,16 +46,16 @@ public abstract class ElementFormatter<E extends IniElement> implements ElementF
      * @param value value
      * @return true if can.
      */
-    public abstract boolean check(CharSequence value);
+    public abstract boolean check(String value);
 
     /**
-     * <pre> this method will not check value, so you should {@link #check(CharSequence)} first.
+     * <pre> this method will not check value, so you should {@link #check(String)} first.
      * <pre> However, not checking will not necessarily report an error, but may result in non-compliance.
-     * @param value a CharSequence value
+     * @param value a String value
      * @param line line number
-     * @return {@link E}
+     * @return {@link E}, can not be null.
      */
     @Override
-    public abstract E format(CharSequence value, int line);
+    public abstract E format(String value, int line);
 
 }

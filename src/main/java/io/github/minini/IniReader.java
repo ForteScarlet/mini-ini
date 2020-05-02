@@ -4,7 +4,9 @@ import io.github.minini.element.IniComment;
 import io.github.minini.element.IniElement;
 import io.github.minini.element.IniProperty;
 import io.github.minini.element.IniSection;
+import io.github.minini.formatter.CommentElementFormatter;
 import io.github.minini.formatter.DefaultIniFormatter;
+import io.github.minini.formatter.ElementFormatter;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -42,14 +44,21 @@ public abstract class IniReader implements IniReadable {
      * @return {@link IniFormatter}
      */
     protected IniFormatter getFormatter(){
-        return formatterFactory.apply(SECTIONS_HEAD, SECTIONS_END, PARAMETER_SPLIT, COMMENT_HEAD);
+
+        return formatterFactory.apply(
+                new CommentElementFormatter(),
+                null,
+                null
+        );
     }
 
     /** get a formatter by factory
      * @return {@link IniFormatter}
      */
-    protected IniFormatter getFormatter(char sectionsHead, char sectionsEnd, char parameterSplit){
-        return formatterFactory.apply(sectionsHead, sectionsEnd, parameterSplit, COMMENT_HEAD);
+    protected IniFormatter getFormatter(ElementFormatter<IniComment> commentElementFormatter,
+                                        ElementFormatter<IniSection> sectionElementFormatter,
+                                        ElementFormatter<IniProperty> propertyElementFormatter){
+        return formatterFactory.apply(commentElementFormatter, sectionElementFormatter, propertyElementFormatter);
     }
 
     /**
