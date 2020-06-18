@@ -1,6 +1,7 @@
 package love.forte.minini.reader;
 
 import love.forte.minini.Ini;
+import love.forte.minini.IniFormatterFactory;
 import love.forte.minini.IniReader;
 
 import java.io.BufferedReader;
@@ -15,6 +16,13 @@ import java.io.Reader;
  * @author <a href="https://github.com/ForteScarlet"> ForteScarlet </a>
  */
 public class BufferedIniReader extends IniReader {
+
+    public BufferedIniReader() {
+    }
+
+    public BufferedIniReader(IniFormatterFactory formatterFactory) {
+        super(formatterFactory);
+    }
 
     /**
      * to buffered and read
@@ -33,7 +41,7 @@ public class BufferedIniReader extends IniReader {
     }
 
     /**
-     * read buffered reader and parse to ini
+     * read buffered reader and parse to ini.
      * @param reader BufferedReader
      * @return Ini
      * @throws IOException io exception

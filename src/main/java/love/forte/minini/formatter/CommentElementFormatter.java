@@ -1,6 +1,7 @@
 package love.forte.minini.formatter;
 
 import love.forte.minini.element.IniComment;
+import love.forte.minini.element.IniCommentImpl;
 
 /**
  *
@@ -29,7 +30,7 @@ public class CommentElementFormatter extends ElementFormatter<IniComment> {
      */
     @Override
     public IniComment format(String value, int line) {
-        return new IniComment(value.substring(1), value, line);
+        return new IniCommentImpl(value.substring(1), value, line);
     }
 
     /**

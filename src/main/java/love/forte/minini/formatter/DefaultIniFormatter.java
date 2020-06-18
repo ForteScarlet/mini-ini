@@ -66,7 +66,7 @@ public class DefaultIniFormatter implements IniFormatter {
     public DefaultIniFormatter(ElementFormatter<IniComment> commentElementFormatter,
                                ElementFormatter<IniSection> sectionElementFormatter,
                                ElementFormatter<IniProperty> propertyElementFormatter
-                               ) {
+    ) {
         this.commentElementFormatter = commentElementFormatter;
         this.sectionElementFormatter = sectionElementFormatter;
         this.propertyElementFormatter = propertyElementFormatter;
@@ -104,22 +104,23 @@ public class DefaultIniFormatter implements IniFormatter {
                 // save last section
                 lastSection = section;
                 element = section;
-            } else
-                // property ?
-                if (propertyElementFormatter.check(line)) {
-                    IniProperty property = propertyElementFormatter.format(line, preEffectiveLineNumber);
-                    // set section if exists
-                    // In general it should be there, unless it's incorrectly formatted. If not, an exception is thrown.
-                    if(lastSection == null){
-                        throw new IniFormatException("Cannot found section for property line " + lineNumber + " : " + line);
-                    }
-                    // set section for property
-                    property.setSection(lastSection);
-                    element = property;
-                } else {
-                    // None of them
-                    throw new IniFormatException("No matching element type found for line "+ lineNumber +" : " + line);
+        } else
+            // property ?
+            if (propertyElementFormatter.check(line)) {
+                IniProperty property = propertyElementFormatter.format(line, preEffectiveLineNumber);
+                // set section if exists
+                // In general it should be there, unless it's incorrectly formatted. If not, an exception is thrown.
+                if (lastSection == null) {
+                    throw new IniFormatException("Cannot found section for property line " + lineNumber + " : " + line);
                 }
+                // set section for property
+                property.setSection(lastSection);
+                lastSection.add(property);
+                element = property;
+        } else {
+            // None of them
+            throw new IniFormatException("No matching element type found for line " + lineNumber + " : " + line);
+        }
 
         // if no throw, update effective line number.
         effectiveLineNumber = preEffectiveLineNumber;

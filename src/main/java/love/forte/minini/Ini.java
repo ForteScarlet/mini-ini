@@ -111,11 +111,11 @@ public class Ini extends ArrayList<IniElement> /*implements Map<String, IniPrope
             next = iter.next();
             if(next.isProperty()){
                 String pk;
+                IniProperty inip = (IniProperty)next;
                 if(delimiter != null){
-                    IniProperty inip = (IniProperty)next;
-                    pk = inip.getSection().value() + delimiter + inip.value();
+                    pk = inip.getSection().value() + delimiter + inip.key();
                 }else{
-                    pk = next.value();
+                    pk = inip.key();
                 }
                 prop.setProperty(pk ,next.value());
             }

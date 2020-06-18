@@ -2,6 +2,7 @@ package love.forte.minini.formatter;
 
 
 import love.forte.minini.element.IniProperty;
+import love.forte.minini.element.IniPropertyImpl;
 
 /**
  * @author <a href="https://github.com/ForteScarlet"> ForteScarlet </a>
@@ -68,6 +69,6 @@ public class PropertyElementFormatter extends ElementFormatter<IniProperty> {
         final String propKey = split[0];
         final String propValue = split[1];
 
-        return new IniProperty(propKey, propValue, value, line);
+        return new IniPropertyImpl(propKey, propValue, value, line);
     }
 }

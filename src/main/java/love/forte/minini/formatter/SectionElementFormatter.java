@@ -3,6 +3,7 @@ package love.forte.minini.formatter;
 import love.forte.minini.IniFormatException;
 import love.forte.minini.element.IniComment;
 import love.forte.minini.element.IniSection;
+import love.forte.minini.element.IniSectionImpl;
 
 /**
  * @author <a href="https://github.com/ForteScarlet"> ForteScarlet </a>
@@ -81,6 +82,6 @@ public class SectionElementFormatter extends ElementFormatter<IniSection> {
             }
         }
 
-        return new IniSection(sectionValue.substring(1, indexOfEnd), sectionValue, line, comment);
+        return new IniSectionImpl(sectionValue.substring(1, indexOfEnd), sectionValue, line, comment);
     }
 }

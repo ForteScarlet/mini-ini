@@ -5,33 +5,11 @@ package love.forte.minini.element;
  *
  * @author <a href="https://github.com/ForteScarlet"> ForteScarlet </a>
  */
-public class IniComment extends BaseElement {
+public interface IniComment extends IniElement {
 
     /** Ini file comment's head . maybe ';' or '#', default is '#'   */
-    public static final char HEAD = '#';
-    public static final char[] HEADS = {';', '#'};
-
-
-    /** constructor */
-    public IniComment(String value, String originalValue, int lineNumber){
-        super(value, originalValue, lineNumber);
-    }
-
-    /** constructor */
-    public IniComment(String originalValue, int lineNumber){
-        super(originalValue.substring(1), originalValue, lineNumber);
-    }
-
-    /**
-     * If the value changed, change the originalValue
-     *
-     * @param newValue when value changes, like {@link #setValue(String)} or {@link #setValue(java.util.function.Function)}
-     */
-    @Override
-    protected String valueChanged(String newValue) {
-        return "# " + trim(newValue);
-    }
-
+    char HEAD = '#';
+    char[] HEADS = {';', '#'};
 
     /**
      * <pre> there may be comments at the end of each element.
@@ -42,7 +20,7 @@ public class IniComment extends BaseElement {
      * @return comment end of the element or null. if element, return itself.
      */
     @Override
-    public IniComment getComment() {
+    default IniComment getComment() {
         return null;
     }
 
@@ -50,15 +28,15 @@ public class IniComment extends BaseElement {
      * clear comment (if exists).
      */
     @Override
-    public void clearComment() { }
+    default void clearComment() { }
 
     /**
      * like {@link #toString()}, without comment value(if exists).
-     *
+     * comment to no comment string? no, return original value.
      * @return to string value without comment value.
      */
     @Override
-    public String toNoCommentString() {
+    default String toNoCommentString() {
         return getOriginalValue();
     }
 

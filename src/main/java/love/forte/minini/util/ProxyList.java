@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 /**
+ * proxy list
  * @author <a href="https://github.com/ForteScarlet"> ForteScarlet </a>
  */
 public interface ProxyList<E> extends List<E> {

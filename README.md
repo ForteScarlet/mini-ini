@@ -1,5 +1,7 @@
 <div align="center" style="text-align: center; margin:0 auto;">
 <h1>mini-ini</h1>
+<img alt="hi! i'm ForteScarlet~" src="https://img.shields.io/badge/Scarlet-Forte-green" />
+<a href="https://codebeat.co/projects/github-com-fortescarlet-mini-ini-master"><img alt="codebeat badge" src="https://codebeat.co/badges/2380d6ed-4d5d-4e62-a7d6-79c77a9cbddb" /></a>
 </div>
 
 

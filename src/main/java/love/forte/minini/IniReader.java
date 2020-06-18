@@ -7,6 +7,8 @@ import love.forte.minini.element.IniSection;
 import love.forte.minini.formatter.*;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +36,15 @@ public abstract class IniReader implements IniReadable {
         SECTIONS_END = IniSection.END  ;
         PARAMETER_SPLIT = IniProperty.P_V_SPLIT;
         COMMENT_HEAD = IniComment.HEAD;
-        formatterFactory = DefaultIniFormatter::new;
+        this.formatterFactory = DefaultIniFormatter::new;
+    }
+
+    public IniReader(IniFormatterFactory formatterFactory){
+        SECTIONS_HEAD = IniSection.HEAD;
+        SECTIONS_END = IniSection.END  ;
+        PARAMETER_SPLIT = IniProperty.P_V_SPLIT;
+        COMMENT_HEAD = IniComment.HEAD;
+        this.formatterFactory = formatterFactory;
     }
 
     /**
@@ -85,6 +95,23 @@ public abstract class IniReader implements IniReadable {
     @Override
     public Ini read(File file) throws IOException {
         try ( Reader reader = new FileReader(file)) {
+            return read(reader);
+        }
+    }
+
+    /**
+     *
+     * read ini file to bean
+     *
+     * @see #read(Reader)
+     * @param path ini path(file)
+     * @return ini bean
+     * @throws IOException io exception
+     * @throws IniFormatException format exception
+     */
+    @Override
+    public Ini read(Path path) throws IOException {
+        try (Reader reader = Files.newBufferedReader(path)) {
             return read(reader);
         }
     }

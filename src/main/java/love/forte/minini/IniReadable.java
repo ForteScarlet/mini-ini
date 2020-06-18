@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
+import java.nio.file.Path;
 
 /**
  * reader for read ini input
@@ -44,4 +45,15 @@ public interface IniReadable {
      */
     Ini read(File file) throws IOException ;
 
+    /**
+     *
+     * read ini file to bean
+     *
+     * @see #read(Reader)
+     * @param path ini path(file)
+     * @return ini bean
+     * @throws IOException io exception
+     * @throws IniFormatException format exception
+     */
+    Ini read(Path path) throws IOException;
 }

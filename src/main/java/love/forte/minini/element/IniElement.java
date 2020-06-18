@@ -61,8 +61,13 @@ public interface IniElement extends CharSequence {
      * @return to string value.
      */
     @Override
-    public String toString();
+    String toString();
 
+    /**
+     * get the original string.
+     * @return original string value.
+     */
+    String getOriginalValue();
 
     /**
      * the line number where you are.
@@ -93,21 +98,21 @@ public interface IniElement extends CharSequence {
     }
 
     /**
-     * Am I a comment?
+     * Am I comment?
      * @return is it a comment?
      */
     default boolean isComment(){
         return this instanceof IniComment;
     }
     /**
-     * Am I a property?
+     * Am I property?
      * @return is it a property?
      */
     default boolean isProperty(){
         return this instanceof IniProperty;
     }
     /**
-     * Am I a section?
+     * Am I section?
      * @return is it a section?
      */
     default boolean isSection(){

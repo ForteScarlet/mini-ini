@@ -5,7 +5,6 @@ import love.forte.minini.IniReader;
 import love.forte.minini.reader.BufferedIniReader;
 
 import java.io.InputStream;
-import java.nio.file.Paths;
 
 /**
  * @author <a href="https://github.com/ForteScarlet"> ForteScarlet </a>
@@ -16,6 +15,15 @@ public class Demo1 {
 
         System.out.println(in);
 
+        /*
+            If you want to change or use some of your own rules, you can see:
+            IniReader
+            BufferedIniReader
+            IniFormatterFactory (function implement: DefaultIniFormatter::new)
+            CommentElementFormatter
+            SectionElementFormatter
+            PropertyElementFormatter
+         */
         IniReader ir = new BufferedIniReader();
         Ini ini = ir.read(in);
 

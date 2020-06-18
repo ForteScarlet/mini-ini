@@ -115,9 +115,11 @@ public abstract class BaseElement implements IniElement {
      * get the original string.
      * @return original string value.
      */
-    protected String getOriginalValue() {
+    @Override
+    public String getOriginalValue() {
         return originalValue;
     }
+
 
     protected void setOriginalValue(String newOriginalValue) {
         this.originalValue = newOriginalValue;
