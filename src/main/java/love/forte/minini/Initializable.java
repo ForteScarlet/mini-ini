@@ -1,4 +1,4 @@
-package io.github.minini;
+package love.forte.minini;
 
 /**
  * Initializable, used by {@link IniFormatter}

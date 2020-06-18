@@ -1,9 +1,11 @@
-package io.github.minini.reader;
+package love.forte.minini.reader;
 
-import io.github.minini.Ini;
-import io.github.minini.IniReader;
+import love.forte.minini.Ini;
+import love.forte.minini.IniReader;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.Reader;
 
 /**
  *
@@ -30,12 +32,14 @@ public class BufferedIniReader extends IniReader {
         return bufferedRead(bufReader);
     }
 
-
+    /**
+     * read buffered reader and parse to ini
+     * @param reader BufferedReader
+     * @return Ini
+     * @throws IOException io exception
+     */
     private Ini bufferedRead(BufferedReader reader) throws IOException {
-
-
         return defaultFormat(reader);
-
     }
 
 

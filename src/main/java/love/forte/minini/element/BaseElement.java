@@ -1,4 +1,4 @@
-package io.github.minini.element;
+package love.forte.minini.element;
 
 
 /**
@@ -154,7 +154,7 @@ public abstract class BaseElement implements IniElement {
      */
     @Override
     public String toCompleteString() {
-        return comment == null ? originalValue : originalValue + comment;
+        return comment == null ? originalValue : originalValue + " " + comment;
     }
 
     //**************** implements from String ****************//

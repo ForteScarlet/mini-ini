@@ -1,11 +1,11 @@
-package io.github.minini.formatter;
+package love.forte.minini.formatter;
 
-import io.github.minini.IniFormatException;
-import io.github.minini.IniFormatter;
-import io.github.minini.element.IniComment;
-import io.github.minini.element.IniElement;
-import io.github.minini.element.IniProperty;
-import io.github.minini.element.IniSection;
+import love.forte.minini.IniFormatException;
+import love.forte.minini.IniFormatter;
+import love.forte.minini.element.IniComment;
+import love.forte.minini.element.IniElement;
+import love.forte.minini.element.IniProperty;
+import love.forte.minini.element.IniSection;
 
 import java.util.Objects;
 
@@ -90,7 +90,7 @@ public class DefaultIniFormatter implements IniFormatter {
         }
 
         // format line.
-        IniElement element = null;
+        IniElement element;
         // pre effective line number, preEff = eff + 1
         int preEffectiveLineNumber = effectiveLineNumber + 1;
 
@@ -99,14 +99,13 @@ public class DefaultIniFormatter implements IniFormatter {
             element = commentElementFormatter.format(line, preEffectiveLineNumber);
         } else
             // section?
-//            if (line.charAt(0) == SECTIONS_HEAD) {
             if (sectionElementFormatter.check(line)) {
                 IniSection section = sectionElementFormatter.format(line, preEffectiveLineNumber);
                 // save last section
                 lastSection = section;
                 element = section;
             } else
-                // parameters ?
+                // property ?
                 if (propertyElementFormatter.check(line)) {
                     IniProperty property = propertyElementFormatter.format(line, preEffectiveLineNumber);
                     // set section if exists
@@ -115,8 +114,8 @@ public class DefaultIniFormatter implements IniFormatter {
                         throw new IniFormatException("Cannot found section for property line " + lineNumber + " : " + line);
                     }
                     // set section for property
-
-
+                    property.setSection(lastSection);
+                    element = property;
                 } else {
                     // None of them
                     throw new IniFormatException("No matching element type found for line "+ lineNumber +" : " + line);

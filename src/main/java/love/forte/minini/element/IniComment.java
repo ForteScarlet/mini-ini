@@ -1,4 +1,4 @@
-package io.github.minini.element;
+package love.forte.minini.element;
 
 /**
  * Ini file's comment.
@@ -7,8 +7,8 @@ package io.github.minini.element;
  */
 public class IniComment extends BaseElement {
 
-    /** Ini file comment's head . maybe ';' or '#', default is ';'   */
-    public static final char HEAD = ';';
+    /** Ini file comment's head . maybe ';' or '#', default is '#'   */
+    public static final char HEAD = '#';
     public static final char[] HEADS = {';', '#'};
 
 
@@ -29,7 +29,7 @@ public class IniComment extends BaseElement {
      */
     @Override
     protected String valueChanged(String newValue) {
-        return "; " + trim(newValue);
+        return "# " + trim(newValue);
     }
 
 

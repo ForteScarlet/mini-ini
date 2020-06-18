@@ -1,8 +1,8 @@
-package io.github.minini.formatter;
+package love.forte.minini.formatter;
 
-import io.github.minini.IniFormatException;
-import io.github.minini.element.IniComment;
-import io.github.minini.element.IniSection;
+import love.forte.minini.IniFormatException;
+import love.forte.minini.element.IniComment;
+import love.forte.minini.element.IniSection;
 
 /**
  * @author <a href="https://github.com/ForteScarlet"> ForteScarlet </a>
@@ -61,11 +61,12 @@ public class SectionElementFormatter extends ElementFormatter<IniSection> {
             // can not found end.
             throw new IniFormatException("can not found the end character '"+ end +"' for section line "+ line +" : " + value);
         }
-        int indexOutOfHead = value.indexOf(head, 1);
-        if(indexOutOfHead < indexOfEnd){
+//        int indexOutOfHead = value.indexOf(head, 1);
+//        if(indexOutOfHead < indexOfEnd){
             // more head.
             // maybe.. do nothing?
-        }
+//        }
+
         // section value
         String sectionValue = value.substring(0, indexOfEnd+1).trim();
         String endOfValue = value.substring(indexOfEnd+1).trim();

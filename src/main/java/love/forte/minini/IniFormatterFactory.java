@@ -1,9 +1,9 @@
-package io.github.minini;
+package love.forte.minini;
 
-import io.github.minini.element.IniComment;
-import io.github.minini.element.IniProperty;
-import io.github.minini.element.IniSection;
-import io.github.minini.formatter.ElementFormatter;
+import love.forte.minini.element.IniComment;
+import love.forte.minini.element.IniProperty;
+import love.forte.minini.element.IniSection;
+import love.forte.minini.formatter.ElementFormatter;
 
 /**
  * <pre> function interface for iniFormatter

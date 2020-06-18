@@ -1,12 +1,10 @@
-package io.github.minini;
+package love.forte.minini;
 
-import io.github.minini.element.IniComment;
-import io.github.minini.element.IniElement;
-import io.github.minini.element.IniProperty;
-import io.github.minini.element.IniSection;
-import io.github.minini.formatter.CommentElementFormatter;
-import io.github.minini.formatter.DefaultIniFormatter;
-import io.github.minini.formatter.ElementFormatter;
+import love.forte.minini.element.IniComment;
+import love.forte.minini.element.IniElement;
+import love.forte.minini.element.IniProperty;
+import love.forte.minini.element.IniSection;
+import love.forte.minini.formatter.*;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -47,8 +45,8 @@ public abstract class IniReader implements IniReadable {
 
         return formatterFactory.apply(
                 new CommentElementFormatter(),
-                null,
-                null
+                new SectionElementFormatter(),
+                new PropertyElementFormatter()
         );
     }
 
@@ -112,7 +110,7 @@ public abstract class IniReader implements IniReadable {
         IniFormatter formatter = getFormatter();
         List<IniElement> iniElements = new ArrayList<>();
         // new line split
-        String newLineSplit = System.getProperty("line.separator", "\r\n");
+        String newLineSplit = System.getProperty("line.separator", "\n");
         StringBuilder line = new StringBuilder(builderCapacity);
 
         int ch;

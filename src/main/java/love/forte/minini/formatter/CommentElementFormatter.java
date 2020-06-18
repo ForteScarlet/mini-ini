@@ -1,6 +1,6 @@
-package io.github.minini.formatter;
+package love.forte.minini.formatter;
 
-import io.github.minini.element.IniComment;
+import love.forte.minini.element.IniComment;
 
 /**
  *
@@ -38,7 +38,7 @@ public class CommentElementFormatter extends ElementFormatter<IniComment> {
      */
     @Override
     public boolean check(String value){
-        // if start with ';', can
+        // if start with '#'
         return value.charAt(0) == start;
     }
 

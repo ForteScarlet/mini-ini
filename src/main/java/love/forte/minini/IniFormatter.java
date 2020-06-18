@@ -1,6 +1,6 @@
-package io.github.minini;
+package love.forte.minini;
 
-import io.github.minini.element.IniElement;
+import love.forte.minini.element.IniElement;
 
 import java.io.Closeable;
 
@@ -15,7 +15,7 @@ import java.io.Closeable;
 public interface IniFormatter extends Closeable, Initializable {
 
     /** the new line separator on current system. */
-    String NEW_LINE_SEPARATOR = System.getProperty("line.separator", "\r\n");
+    String NEW_LINE_SEPARATOR = System.getProperty("line.separator", "\n");
 
     /**
      * format a line as a element

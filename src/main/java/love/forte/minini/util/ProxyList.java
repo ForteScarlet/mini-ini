@@ -1,4 +1,4 @@
-package io.github.minini.util;
+package love.forte.minini.util;
 
 import java.util.Collection;
 import java.util.Iterator;

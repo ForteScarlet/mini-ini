@@ -1,4 +1,4 @@
-package io.github.minini.element;
+package love.forte.minini.element;
 
 import java.util.Optional;
 import java.util.function.Function;

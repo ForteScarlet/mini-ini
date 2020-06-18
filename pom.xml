@@ -10,7 +10,7 @@
         <version>7</version>
     </parent>
 
-    <groupId>io.github.ForteScarlet</groupId>
+    <groupId>love.forte</groupId>
     <artifactId>mini-ini</artifactId>
     <version>1.0-SNAPSHOT</version>
 

@@ -1,4 +1,4 @@
-package io.github.minini.element;
+package love.forte.minini.element;
 
 import java.util.Map;
 import java.util.function.Function;
@@ -23,27 +23,29 @@ public class IniProperty extends BaseElement implements Map.Entry<String, String
     private String key;
     // private value. The value in super class, no need here.
 
+    /**
+     * IniProperty constructor
+     * @param section       property section
+     * @param key           the property's key, not null
+     * @param value         the property's value, null able
+     * @param originalValue the original value of this property line
+     * @param lineNumber    line number
+     */
     public IniProperty(IniSection section, String key, String value, String originalValue, int lineNumber) {
         super(value, originalValue, lineNumber);
         this.section = section;
         this.key = key;
     }
 
+    /**
+     * IniProperty constructor without section. maybe init later
+     * @see #IniProperty(IniSection, String, String, String, int)
+     * */
     public IniProperty(String key, String value, String originalValue, int lineNumber) {
         super(value, originalValue, lineNumber);
         this.key = key;
     }
 
-    public IniProperty(IniSection section, String key, String value, String originalValue, int lineNumber, IniComment comment) {
-        super(value, originalValue, lineNumber, comment);
-        this.section = section;
-        this.key = key;
-    }
-
-    public IniProperty(String key, String value, String originalValue, int lineNumber, IniComment comment) {
-        super(value, originalValue, lineNumber, comment);
-        this.key = key;
-    }
 
     /**
      * section setter.
@@ -100,7 +102,7 @@ public class IniProperty extends BaseElement implements Map.Entry<String, String
      * @return original value.
      */
     protected String keyChanged(String newKey) {
-        return key.toString() + P_V_SPLIT + newKey;
+        return key + P_V_SPLIT + newKey;
     }
 
     /**
@@ -111,10 +113,11 @@ public class IniProperty extends BaseElement implements Map.Entry<String, String
      */
     @Override
     protected String valueChanged(String newValue) {
-        return key.toString() + P_V_SPLIT + newValue;
+        return key + P_V_SPLIT + newValue;
     }
 
     /**
+     * <pre> default ini property's comment is null.
      * <pre> there may be comments at the end of each element.
      * <pre> or null.
      * <pre> if this element is comment, return itself.

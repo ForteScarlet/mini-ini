@@ -1,6 +1,6 @@
-package io.github.minini;
+package love.forte.minini;
 
-import io.github.minini.element.IniElement;
+import love.forte.minini.element.IniElement;
 
 /**
  *

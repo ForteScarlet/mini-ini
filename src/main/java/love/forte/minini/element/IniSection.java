@@ -1,9 +1,10 @@
-package io.github.minini.element;
+package love.forte.minini.element;
 
-import io.github.minini.Ini;
-import io.github.minini.util.ProxyList;
+import love.forte.minini.util.ProxyList;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringJoiner;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -63,7 +64,7 @@ public class IniSection extends BaseElement implements ProxyList<IniProperty> {
      * @return string with properties value.
      */
     public String toPropertiesString(){
-        StringJoiner joiner = new StringJoiner(System.getProperty("line.separator", "\r\n"));
+        StringJoiner joiner = new StringJoiner(System.getProperty("line.separator", "\n"));
         joiner.add(toString());
         for (IniProperty p : this) {
             joiner.add(p);

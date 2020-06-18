@@ -1,6 +1,9 @@
-package io.github.minini;
+package love.forte.minini;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
 
 /**
  * reader for read ini input

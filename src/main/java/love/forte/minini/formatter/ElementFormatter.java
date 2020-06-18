@@ -1,9 +1,7 @@
-package io.github.minini.formatter;
+package love.forte.minini.formatter;
 
-import io.github.minini.ElementFormattable;
-import io.github.minini.element.IniComment;
-import io.github.minini.element.IniElement;
-import io.github.minini.formatter.CommentElementFormatter;
+import love.forte.minini.ElementFormattable;
+import love.forte.minini.element.IniElement;
 
 /**
  * <pre> elementFormatter, format a String value as {@link IniElement}.
@@ -13,7 +11,9 @@ import io.github.minini.formatter.CommentElementFormatter;
 public abstract class ElementFormatter<E extends IniElement> implements ElementFormattable<E> {
 
     /**
-     * Other than CommentElementFormatter, All element formatters should additionally require a comment element formatter, or extends comment element formatter.
+     * Other than CommentElementFormatter,
+     * All element formatters should additionally require a comment element formatter,
+     * or extends comment element formatter.
      */
     private CommentElementFormatter commentElementFormatter;
 
@@ -35,6 +35,7 @@ public abstract class ElementFormatter<E extends IniElement> implements ElementF
     protected CommentElementFormatter getCommentElementFormatter(){
         return this.commentElementFormatter;
     }
+
     /** {@link #commentElementFormatter}'s setter */
     protected void setCommentElementFormatter(CommentElementFormatter commentElementFormatter){
         this.commentElementFormatter = commentElementFormatter;
