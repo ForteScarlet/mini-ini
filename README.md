@@ -1,4 +1,4 @@
-<div style="text-align: center; margin:0 auto;">
+<div align="center" style="text-align: center; margin:0 auto;">
 <h1>mini-ini</h1>
 </div>
 
