@@ -122,7 +122,7 @@ Ini解析器相关：`IniFormatter`、`IniFormatterFactory`、`ElementFormatter`
 ```ini
 # 注释
 [节1] # 标题(节)后的注释
-# 注释, 下面是部分1的键值对儿
+# 注释, 下面是节1的键值对儿
 property_key1=property_value
 property_key2=property_value
 property_key3=property_value
