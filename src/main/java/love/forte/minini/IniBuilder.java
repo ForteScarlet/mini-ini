@@ -3,10 +3,7 @@ package love.forte.minini;
 import love.forte.minini.annotation.Nullable;
 import love.forte.minini.element.*;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Supplier;
 
 /**
@@ -219,6 +216,50 @@ public class IniBuilder {
         });
         return this;
     }
+
+    /**
+     * Plus properties
+     * @param properties properties
+     */
+    public IniBuilder plusProperties(Properties properties){
+        final Set<String> names = properties.stringPropertyNames();
+        for (String key : names) {
+            String value = properties.getProperty(key);
+            checkProps(() -> iniPropertyCreator.create(key, value, line++, null));
+        }
+        return this;
+    }
+
+    /**
+     * Plus properties
+     * @param properties properties
+     */
+    public IniBuilder plusProperties(Properties properties, IniComment comment){
+        final Set<String> names = properties.stringPropertyNames();
+        for (String key : names) {
+            String value = properties.getProperty(key);
+            checkProps(() -> iniPropertyCreator.create(key, value, line++, comment));
+        }
+        return this;
+    }
+
+    /**
+     * Plus properties
+     * @param properties properties
+     */
+    public IniBuilder plusProperties(Properties properties, String commentValue){
+        final Set<String> names = properties.stringPropertyNames();
+        for (String key : names) {
+            String value = properties.getProperty(key);
+            checkProps(() -> {
+                final int lineNumber = line++;
+                IniComment comment = iniCommentCreator.create(commentValue, lineNumber);
+                return iniPropertyCreator.create(key, value, lineNumber, comment);
+            });
+        }
+        return this;
+    }
+
 
 
     //**************** add comment ****************//

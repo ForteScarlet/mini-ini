@@ -1,6 +1,7 @@
 <div align="center" style="text-align: center; margin:0 auto;">
 <h1>mini-ini</h1>
-<a href="https://codebeat.co/projects/github-com-fortescarlet-mini-ini-master"><img alt="codebeat badge" src="https://codebeat.co/badges/2380d6ed-4d5d-4e62-a7d6-79c77a9cbddb" /></a>
+<a href="https://codebeat.co/projects/github-com-fortescarlet-mini-ini-master"><img alt="codebeat badge" src="https://codebeat.co/badges/2380d6ed-4d5d-4e62-a7d6-79c77a9cbddb" /></a> 
+<a href="https://repo1.maven.org/maven2/love/forte/mini-ini/"><img alt="version" src="https://img.shields.io/maven-central/v/love.forte/mini-ini" /></a>
 </div>
 
 
@@ -16,6 +17,7 @@ This is a mini util for `.ini` file.
 >and hope a star, Thanks~  ♪(´▽｀)
 
 github: https://github.com/ForteScarlet/mini-ini
+
 gitee : https://gitee.com/ForteScarlet/mini-ini
 
 ## How to use?
@@ -25,6 +27,21 @@ First, Click the star button in the upper right corner to make some hidden conte
 ### Create project
 Create project with:
 
+> version: [![img](https://img.shields.io/maven-central/v/love.forte/mini-ini)](https://repo1.maven.org/maven2/love/forte/mini-ini/)
+
+Maven:
+```xml
+<dependency>
+    <groupId>love.forte</groupId>
+    <artifactId>mini-ini</artifactId>
+    <version>${version}</version>
+</dependency>
+```
+
+Gradle:
+```
+compile group: 'love.forte', name: 'mini-ini', version: '${version}'
+```
 
 ### Read ini
 You can see part of the code that appears below from [Demo1](./src/test/java/com/forte/test/Demo1.java).
@@ -53,7 +70,9 @@ You can see part of the code that appears below from [Demo2](./src/test/java/com
 
 ```java
  // Create an IniBuilder and
-IniBuilder b = new IniBuilder().plusSection("sec1", "this is a section")
+IniBuilder b = new IniBuilder()
+        .plusSection("sec1", "this is a section")
+        .plusSection("sec1", "this is a section")
         .plusProperty("key1", "value")
         .plusProperty("key2", "value")
         .plusProperty("key3", "value")
