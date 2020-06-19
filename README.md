@@ -71,7 +71,8 @@ You can see part of the code that appears below from [Demo2](./src/test/java/com
 ```java
  // Create an IniBuilder and
 IniBuilder b = new IniBuilder()
-        .plusSection("sec1", "this is a section")
+        .plusComment("this is a test ini")
+        .skipLine(2)
         .plusSection("sec1", "this is a section")
         .plusProperty("key1", "value")
         .plusProperty("key2", "value")
@@ -101,6 +102,12 @@ ini.write(Paths.get("F:\\test3.ini"), true);
 ## Customize
 You can customize (implement the interface) to achieve some additional parsing methods.
 
+I provide some easy-to-implement (probably) interfaces to support user customization. 
+If you want, you can also open source your additional implementations. If you open source, you can tell me, I will show the address in the README.
+
+
+some interface or abstract class:
+
 Ini elements like `IniElement`、`BaseElement` or `IniComment`(Default implementation is `IniCommentImpl`)、`IniProperty`(Default implementation is `IniPropertyImpl`)、`IniSection`(Default implementation is `IniSectionImpl`).
 
 Ini reader like `IniReadable`、`IniReader` or Refer to the default implementation `BufferedIniReader`.
@@ -127,16 +134,46 @@ property_key3=property_value
 ```
 - By default, the rules are:
     - section is wrapped by [], and there can be comments after the end.
-    - comment starts with # and can be at the beginning of a line or the end of a section.
+    - comment starts with `#` and can be at the beginning of a line or the end of a section.
     - Property is a key-value pair under section, and cannot be followed by a comment.
 
 
 
 ## I found a bug
-Oh! nice! You can tell me via issue! Of course, try to use simple English or Chinese. Thanks.
+Oh! nice! You can tell me through the issue, or submit the bug through branch submission. try to use simple English or Chinese. Thanks.
+
+
+## end
+if you like this, Give me a star or a little pocket money~
+if you don't, May consider helping me improve the code 
+
+Reward me:
+
+<br>
+
+afdian: https://afdian.net/@ForteScarlet
+
+<br>
+
+alipay：
+
+<img src="./img/支付宝收款.jpg" height=600px>
+
+<br>
+
+wechat：
+
+<img src="./img/微信收款.png" height=600px>
 
 
 
+My level is limited, please understand if there are any problems.
+
+<br>
+
+<div align="center" style="text-align: center; margin:0 auto;">
+<p><b>license: Apache License 2.0</b></p>
+</div>
 
 
 
