@@ -1,6 +1,6 @@
 package love.forte.minini;
 
-import com.sun.istack.internal.Nullable;
+import love.forte.minini.annotation.Nullable;
 import love.forte.minini.element.*;
 
 import java.util.ArrayList;

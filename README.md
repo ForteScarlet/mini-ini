@@ -1,6 +1,5 @@
 <div align="center" style="text-align: center; margin:0 auto;">
 <h1>mini-ini</h1>
-<img alt="hi! i'm ForteScarlet~" src="https://img.shields.io/badge/Scarlet-Forte-green" />
 <a href="https://codebeat.co/projects/github-com-fortescarlet-mini-ini-master"><img alt="codebeat badge" src="https://codebeat.co/badges/2380d6ed-4d5d-4e62-a7d6-79c77a9cbddb" /></a>
 </div>
 
@@ -16,16 +15,106 @@ This is a mini util for `.ini` file.
 > 
 >and hope a star, Thanks~  ♪(´▽｀)
 
-# === to be continued ===> 
+github: https://github.com/ForteScarlet/mini-ini
+gitee : https://gitee.com/ForteScarlet/mini-ini
 
 ## How to use?
-first, Click the star button in the upper right corner to make some hidden content take effect. :P
+First, Click the star button in the upper right corner to make some hidden content take effect. :P
 
-first, use maven or gradle to create a project
 
-## 
-## What I need to pay attention to?
+### Create project
+Create project with:
+
+
+### Read ini
+You can see part of the code that appears below from [Demo1](./src/test/java/com/forte/test/Demo1.java).
+
+See [test.ini](./src/test/resources/test.ini)
+```java
+// Get input stream
+InputStream iniInput = Demo1.class.getClassLoader().getResourceAsStream("test.ini");
+
+// Read by default buffered reader
+IniReader ir = new BufferedIniReader();
+Ini ini = ir.read(iniInput);
+
+// show
+System.out.println(ini);
+
+// to properties and show
+ini.toProperties().forEach((k, v) -> {
+    System.out.println(k + "=" + v);
+});
+```
+
+
+### Create/Write ini
+You can see part of the code that appears below from [Demo2](./src/test/java/com/forte/test/Demo2.java).
+
+```java
+ // Create an IniBuilder and
+IniBuilder b = new IniBuilder().plusSection("sec1", "this is a section")
+        .plusProperty("key1", "value")
+        .plusProperty("key2", "value")
+        .plusProperty("key3", "value")
+        .plusProperty("key4", "value")
+        .plusProperty("key5", "value")
+        .plusProperty("key6", "value")
+        .plusSection("sec2")
+        .plusProperty("key1", "value")
+        .plusProperty("key2", "value")
+        .plusProperty("key3", "value")
+        .plusProperty("key4", "value")
+        .plusProperty("key5", "value")
+        .plusProperty("key6", "value")
+;
+
+// Build ini
+final Ini ini = b.build();
+
+// show
+System.out.println(ini);
+
+// Write to file
+ini.write(Paths.get("F:\\test3.ini"), true);
+```
+
+## Customize
+You can customize (implement the interface) to achieve some additional parsing methods.
+
+Ini elements like `IniElement`、`BaseElement` or `IniComment`(Default implementation is `IniCommentImpl`)、`IniProperty`(Default implementation is `IniPropertyImpl`)、`IniSection`(Default implementation is `IniSectionImpl`).
+
+Ini reader like `IniReadable`、`IniReader` or Refer to the default implementation `BufferedIniReader`.
+
+Ini formatter like `IniFormatter`、`IniFormatterFactory`、`ElementFormatter`.
+
+You can refer to [Demo3](./src/test/java/com/forte/test/Demo3.java).
+
+## Attention
+- This project has no additional dependencies, so you should be able to use it directly by importing the jar package.
+
+- By default, when parsing an ini file, the content of the ini file is divided into several parts:
+```ini
+# comment
+[section1] # comment
+# comment
+property_key1=property_value
+property_key2=property_value
+property_key3=property_value
+[section2] # comment
+property_key1=property_value
+property_key2=property_value
+property_key3=property_value
+```
+- By default, the rules are:
+    - section is wrapped by [], and there can be comments after the end.
+    - comment starts with # and can be at the beginning of a line or the end of a section.
+    - Property is a key-value pair under section, and cannot be followed by a comment.
+
+
+
 ## I found a bug
+Oh! nice! You can tell me via issue! Of course, try to use simple English or Chinese. Thanks.
 
 
 

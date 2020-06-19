@@ -9,7 +9,7 @@ import love.forte.minini.element.IniCommentImpl;
  *
  * @author <a href="https://github.com/ForteScarlet"> ForteScarlet </a>
  */
-public class CommentElementFormatter extends ElementFormatter<IniComment> {
+public class CommentElementFormatter extends BaseElementFormatter<IniComment> {
 
     /** comment start char, {@link IniComment#HEAD} */
     private char start;

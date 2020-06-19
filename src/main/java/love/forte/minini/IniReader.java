@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 /**
  *
@@ -30,6 +31,11 @@ public abstract class IniReader implements IniReadable {
     protected final char COMMENT_HEAD;
     /** ini line data formatter factory */
     protected final IniFormatterFactory formatterFactory;
+
+
+    private Supplier<ElementFormatter<IniComment>>  commentElementFormatterSupplier  = CommentElementFormatter::new;
+    private Supplier<ElementFormatter<IniSection>>  sectionElementFormatterSupplier  = SectionElementFormatter::new;
+    private Supplier<ElementFormatter<IniProperty>> propertyElementFormatterSupplier = PropertyElementFormatter::new;
 
     public IniReader(){
         SECTIONS_HEAD = IniSection.HEAD;
@@ -54,19 +60,10 @@ public abstract class IniReader implements IniReadable {
     protected IniFormatter getFormatter(){
 
         return formatterFactory.apply(
-                new CommentElementFormatter(),
-                new SectionElementFormatter(),
-                new PropertyElementFormatter()
+                commentElementFormatterSupplier.get(),
+                sectionElementFormatterSupplier.get(),
+                propertyElementFormatterSupplier.get()
         );
-    }
-
-    /** get a formatter by factory
-     * @return {@link IniFormatter}
-     */
-    protected IniFormatter getFormatter(ElementFormatter<IniComment> commentElementFormatter,
-                                        ElementFormatter<IniSection> sectionElementFormatter,
-                                        ElementFormatter<IniProperty> propertyElementFormatter){
-        return formatterFactory.apply(commentElementFormatter, sectionElementFormatter, propertyElementFormatter);
     }
 
     /**
@@ -162,6 +159,33 @@ public abstract class IniReader implements IniReadable {
         }
 
         return new Ini(iniElements);
+    }
+
+    //**************** getter & setter for formatter supplier ****************//
+
+
+    public Supplier<ElementFormatter<IniComment>> getCommentElementFormatterSupplier() {
+        return commentElementFormatterSupplier;
+    }
+
+    public void setCommentElementFormatterSupplier(Supplier<ElementFormatter<IniComment>> commentElementFormatterSupplier) {
+        this.commentElementFormatterSupplier = commentElementFormatterSupplier;
+    }
+
+    public Supplier<ElementFormatter<IniSection>> getSectionElementFormatterSupplier() {
+        return sectionElementFormatterSupplier;
+    }
+
+    public void setSectionElementFormatterSupplier(Supplier<ElementFormatter<IniSection>> sectionElementFormatterSupplier) {
+        this.sectionElementFormatterSupplier = sectionElementFormatterSupplier;
+    }
+
+    public Supplier<ElementFormatter<IniProperty>> getPropertyElementFormatterSupplier() {
+        return propertyElementFormatterSupplier;
+    }
+
+    public void setPropertyElementFormatterSupplier(Supplier<ElementFormatter<IniProperty>> propertyElementFormatterSupplier) {
+        this.propertyElementFormatterSupplier = propertyElementFormatterSupplier;
     }
 
 

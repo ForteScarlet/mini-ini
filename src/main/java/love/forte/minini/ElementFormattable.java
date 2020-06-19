@@ -12,6 +12,7 @@ import love.forte.minini.element.IniElement;
 public interface ElementFormattable<E extends IniElement> {
 
     /**
+     * 
      * format String value as IniElement
      * @param value a String value
      * @param line line number

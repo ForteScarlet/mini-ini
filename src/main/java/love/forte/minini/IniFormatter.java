@@ -12,7 +12,7 @@ import java.io.Closeable;
  * {@link IniReader#PARAMETER_SPLIT}
  * @author <a href="https://github.com/ForteScarlet"> ForteScarlet </a>
  */
-public interface IniFormatter extends Closeable, Initializable {
+public interface IniFormatter extends Closeable, Initialisable {
 
     /** the new line separator on current system. */
     String NEW_LINE_SEPARATOR = System.getProperty("line.separator", "\n");

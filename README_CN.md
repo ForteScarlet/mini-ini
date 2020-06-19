@@ -1,20 +1,20 @@
 <div style="text-align: center;"><h1>mini-ini</h1></div>
 
-## What is this?
-This is a mini util for `*.ini` file.
+## 这是啥
+这是一个用于操作`.ini`格式文件的工具。
 
->My English is poor, but I still try to edit comments in English. I hope you can understand.
+> My English is poor, but I still try to edit comments in English. I hope you can understand.
+> If you want to read crappy English, you can see [Englich readme](./README.md)
 > 
->Most come from google translation.
-> 
->如果你会中文，那太好了，我们能够很好的交流。
-> 
->and hope a star, Thanks~  ♪(´▽｀)
+> 给我个星星啦~  ♪(´▽｀)
 
-# === to be continued ===> 
 
-## How to use?
-first, Click the star button in the upper right corner to make some hidden content take effect. :P
+## 怎么用？
+首先，点击右上角的星标按钮，以展示隐藏内容。（滑稽
+
+
+## 创建项目
+这是肯定的啦。你需要一个创建一个项目，并导入相关依赖：
 
 
 

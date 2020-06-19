@@ -11,22 +11,27 @@ import java.nio.file.Path;
 import java.util.*;
 
 /**
- * <pre> Ini data.
- * <pre> extends {@code ArrayList<IniElement> }
- * <pre> if you want to add a empty line to this ini, just add null.
+ * <p> Ini data.
+ * <p> extends {@code ArrayList<IniElement> }
+ * <p> if you want to add a empty line to this ini, just add null.
+ * <p> if you want to create Ini, maybe.. {@link IniBuilder} </p>
+ *
+ * @see IniBuilder
  * @author ForteScralet
  * @since 1.0
  */
-public class Ini extends ArrayList<IniElement> /*implements Map<String, IniProperty>*/ {
+public class Ini extends ArrayList<IniElement> {
 
     //**************** constructors from arrayList ****************//
 
-
+    /**
+     * empty ini
+     */
     public Ini() {
     }
 
     /**
-     * constructor
+     * empty ini
      * @param initialCapacity param from {@link ArrayList#ArrayList(int)}
      */
     public Ini(int initialCapacity) {

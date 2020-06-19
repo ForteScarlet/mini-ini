@@ -8,7 +8,7 @@ import love.forte.minini.element.IniSectionImpl;
 /**
  * @author <a href="https://github.com/ForteScarlet"> ForteScarlet </a>
  */
-public class SectionElementFormatter extends ElementFormatter<IniSection> {
+public class SectionElementFormatter extends BaseElementFormatter<IniSection> {
 
     /** section starting char, {@link IniSection#HEAD} */
     private char head;

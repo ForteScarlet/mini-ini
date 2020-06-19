@@ -7,7 +7,7 @@ import love.forte.minini.element.IniPropertyImpl;
 /**
  * @author <a href="https://github.com/ForteScarlet"> ForteScarlet </a>
  */
-public class PropertyElementFormatter extends ElementFormatter<IniProperty> {
+public class PropertyElementFormatter extends BaseElementFormatter<IniProperty> {
 
     /** key value split character, {@link IniProperty#P_V_SPLIT} */
     private char split;
