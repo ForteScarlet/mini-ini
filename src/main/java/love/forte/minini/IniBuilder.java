@@ -25,13 +25,22 @@ public class IniBuilder {
     /** line number. start from 1. */
     private int line = 1;
 
-    /** sectionCreator */
+    /**
+     * sectionCreator
+     * @see #sectionCreator(IniSectionCreator)
+     */
     private IniSectionCreator iniSectionCreator = IniSectionCreator.DEFAULT;
 
-    /** commentCreator */
+    /**
+     * commentCreator
+     * @see #commentCreator(IniCommentCreator)
+     */
     private IniCommentCreator iniCommentCreator = IniCommentCreator.DEFAULT;
 
-    /** sectionCreator */
+    /**
+     * propertyCreator
+     * @see #propertyCreator(IniPropertyCreator)
+     */
     private IniPropertyCreator iniPropertyCreator = IniPropertyCreator.DEFAULT;
 
 
@@ -70,7 +79,7 @@ public class IniBuilder {
      * @see IniPropertyCreator
      * @param iniPropertyCreator {@link IniPropertyCreator}
      */
-    public IniBuilder sectionCreator(IniPropertyCreator iniPropertyCreator){
+    public IniBuilder propertyCreator(IniPropertyCreator iniPropertyCreator){
         Objects.requireNonNull(iniPropertyCreator);
         this.iniPropertyCreator = iniPropertyCreator;
         return this;
