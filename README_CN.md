@@ -8,7 +8,7 @@
 这是一个用于操作`.ini`格式文件的工具。
 
 > My English is poor, but I still try to edit comments in English. I hope you can understand.
-> If you want to read crappy English, you can see [Englich readme](./README.md)
+> If you want to read crappy English, you can see [English readme](./README.md)
 > 
 > 给我个星星啦~  ♪(´▽｀)
 
