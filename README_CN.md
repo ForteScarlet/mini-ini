@@ -100,6 +100,10 @@ ini.write(Paths.get("F:\\test3.ini"), true);
 ```
 
 ## 特性
+* `IniElement`实现接口`java.io.Serializable`，可序列化。(1.1.0)
+* `Ini`继承了`ArrayList<IniElement>`，可序列化，可作为list使用。
+* `IniProperty`实现接口`Map.Entry<String, String>`。
+* `IniSection`实现接口`List<IniProperty>`，可作为list使用。
 
 
 

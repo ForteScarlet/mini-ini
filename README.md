@@ -99,6 +99,12 @@ System.out.println(ini);
 ini.write(Paths.get("F:\\test3.ini"), true);
 ```
 
+## Features 
+* `IniElement` implements the interface `java.io.Serializable`, which can be serialized. (1.1.0)
+* `Ini` inherits `ArrayList<IniElement>`, which can be serialized and used as a list. 
+* `IniProperty` implements the interface `Map.Entry<String, String>`. 
+* `IniSection` implements the interface `List<IniProperty>`, which can be used as a list.
+
 ## Customize
 You can customize (implement the interface) to achieve some additional parsing methods.
 
