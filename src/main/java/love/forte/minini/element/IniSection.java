@@ -1,3 +1,15 @@
+/*
+ * Copyright (c) 2020. ForteScarlet All rights reserved.
+ * Project  mini-ini
+ * File     IniSection.java
+ *
+ * You can contact the author through the following channels:
+ * github https://github.com/ForteScarlet
+ * gitee  https://gitee.com/ForteScarlet
+ * email  ForteScarlet@163.com
+ *
+ */
+
 package love.forte.minini.element;
 
 import love.forte.minini.util.ProxyList;

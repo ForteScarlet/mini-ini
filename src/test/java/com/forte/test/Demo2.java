@@ -2,10 +2,6 @@ package com.forte.test;
 
 import love.forte.minini.Ini;
 import love.forte.minini.IniBuilder;
-import love.forte.minini.reader.BufferedIniReader;
-
-import java.io.File;
-import java.nio.file.Paths;
 
 /**
  * Demo for create a ini and write

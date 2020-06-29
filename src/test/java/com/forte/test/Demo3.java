@@ -1,16 +1,11 @@
 package com.forte.test;
 
-import love.forte.minini.ElementFormattable;
 import love.forte.minini.Ini;
-import love.forte.minini.IniBuilder;
 import love.forte.minini.element.IniSection;
-import love.forte.minini.formatter.ElementFormatter;
 import love.forte.minini.formatter.SectionElementFormatter;
 import love.forte.minini.reader.BufferedIniReader;
 
-import java.io.File;
 import java.io.InputStream;
-import java.nio.file.Paths;
 
 /**
  * Demo for create a ini and write
