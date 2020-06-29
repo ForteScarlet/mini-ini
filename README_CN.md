@@ -99,6 +99,10 @@ System.out.println(ini);
 ini.write(Paths.get("F:\\test3.ini"), true);
 ```
 
+## 特性
+
+
+
 ## 自定义
 可能我提供的默认解析类等无法满足你的需求，这时候你可以通过实现定义的接口来进行自定义。
 

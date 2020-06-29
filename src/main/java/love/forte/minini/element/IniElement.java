@@ -21,7 +21,8 @@ import java.util.function.Function;
  *
  * @author <a href="https://github.com/ForteScarlet"> ForteScarlet </a>
  */
-public interface IniElement extends CharSequence {
+public interface IniElement extends CharSequence, java.io.Serializable {
+
 
     /**
      * <p>this element's value.

@@ -18,6 +18,8 @@ package love.forte.minini.element;
  * @author <a href="https://github.com/ForteScarlet"> ForteScarlet </a>
  */
 public class IniCommentImpl extends BaseElement implements IniComment {
+    private static final long serialVersionUID = 0xFF02FFFF;
+
 
     /** constructor */
     public IniCommentImpl(String value, String originalValue, int lineNumber){

@@ -27,7 +27,7 @@ import java.util.function.Supplier;
  * @author <a href="https://github.com/ForteScarlet"> ForteScarlet </a>
  */
 public class IniSectionImpl extends BaseElement implements IniSection {
-
+    private static final long serialVersionUID = 0xFF00FFFF;
 
     /** list of properties, or empty */
     private List<IniProperty> properties;

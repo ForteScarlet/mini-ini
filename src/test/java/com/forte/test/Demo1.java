@@ -4,7 +4,7 @@ import love.forte.minini.Ini;
 import love.forte.minini.IniReader;
 import love.forte.minini.reader.BufferedIniReader;
 
-import java.io.InputStream;
+import java.io.*;
 
 /**
  *
@@ -40,6 +40,7 @@ public class Demo1 {
         ini.toProperties().forEach((k, v) -> {
             System.out.println(k + "=" + v);
         });
+
 
     }
 }

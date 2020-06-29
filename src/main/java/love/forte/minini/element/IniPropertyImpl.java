@@ -20,6 +20,8 @@ import java.util.function.Function;
  * @author <a href="https://github.com/ForteScarlet"> ForteScarlet </a>
  */
 public class IniPropertyImpl extends BaseElement implements IniProperty {
+    private static final long serialVersionUID = 0xFF01FFFF;
+
 
     /**
      * from section
