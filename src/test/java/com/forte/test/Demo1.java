@@ -4,7 +4,7 @@ import love.forte.minini.Ini;
 import love.forte.minini.IniReader;
 import love.forte.minini.reader.BufferedIniReader;
 
-import java.io.*;
+import java.io.InputStream;
 
 /**
  *
